@@ -37,5 +37,6 @@ coding!
 - Michael Okoro #1: [GitHub](https://github.com/abiazfinest) / [LinkedIn](https://www.linkedin.com/in/michaelcokoro/)
 - Simbongile Mkhotheli #2: [GitHub](https://github.com/simbongile-mkhotheli) / [LinkedIn](https://www.linkedin.com/in/mkoteli)
 - Yusuf Mohsen #3: [GitHub](https://github.com/yusufmohsiin) / [LinkedIn](https://www.linkedin.com/in/yusuf-mohsiin/)
+- Maheswari Kumar #4: [GitHub](https://github.com/MaheswariKumar) / [LinkedIn](https://www.linkedin.com/in/maheswari5kumar)
    ...
 - Teammate name #n: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
