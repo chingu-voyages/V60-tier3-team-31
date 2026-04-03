@@ -35,7 +35,7 @@ your repo access and to practice PR'ing with your team *before* you start
 coding!
 
 - Michael Okoro #1: [GitHub](https://github.com/abiazfinest) / [LinkedIn](https://www.linkedin.com/in/michaelcokoro/)
-- Simbongile Mkhotheli #2: [GitHub]https://github.com/simbongile-mkhotheli) / [LinkedIn](https://www.linkedin.com/in/mkoteli)
+- Simbongile Mkhotheli #2: [GitHub](https://github.com/simbongile-mkhotheli) / [LinkedIn](https://www.linkedin.com/in/mkoteli)
 
    ...
 - Teammate name #n: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
