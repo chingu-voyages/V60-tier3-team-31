@@ -38,5 +38,6 @@ coding!
 - Simbongile Mkhotheli #2: [GitHub](https://github.com/simbongile-mkhotheli) / [LinkedIn](https://www.linkedin.com/in/mkoteli)
 - Yusuf Mohsen #3: [GitHub](https://github.com/yusufmohsiin) / [LinkedIn](https://www.linkedin.com/in/yusuf-mohsiin/)
 - Maheswari Kumar #4: [GitHub](https://github.com/MaheswariKumar) / [LinkedIn](https://www.linkedin.com/in/maheswari5kumar)
+- Mustaqeem Chowdhury #5: [GitHub](https://github.com/mustaqeem-2001) / [LinkedIn](https://www.linkedin.com/in/mustaqeem-c-3a3875208/)
    ...
 - Teammate name #n: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
