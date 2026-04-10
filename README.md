@@ -40,4 +40,4 @@ coding!
 - Maheswari Kumar #4: [GitHub](https://github.com/MaheswariKumar) / [LinkedIn](https://www.linkedin.com/in/maheswari5kumar)
 - Mustaqeem Chowdhury #5: [GitHub](https://github.com/mustaqeem-2001) / [LinkedIn](https://www.linkedin.com/in/mustaqeem-c-3a3875208/)
    ...
-- Teammate name #n: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
+- SaiAnil #6: [GitHub](https://github.com/saianilsingi) / [LinkedIn](https://linkedin.com/in/saianil2002)
