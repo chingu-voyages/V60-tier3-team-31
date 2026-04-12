@@ -1,5 +1,3 @@
-export default function Header() {
-    return (
-        <h1>Header Component</h1>
-    )
+export function Header() {
+  return <h1>Header Component</h1>;
 }
