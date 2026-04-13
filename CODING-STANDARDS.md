@@ -54,14 +54,20 @@ Avoid default exports unless agreed.
 
 ## ⚙️ Component Rules
 
-- Use function declarations
-- Keep UI logic inside components only
+Use function declarations for React components and named utilities, and arrow functions for local callbacks/handlers; keep all UI logic inside components only.
 
-```js
 function JobCard({ job }) {
-  return <div>{job.title}</div>;
+const handleSave = () => {
+alert(`Saved: ${job.title}`);
+};
+
+return (
+<div>
+<h2>{job.title}</h2>
+<button onClick={handleSave}>Save</button>
+</div>
+);
 }
-```
 
 ---
 
@@ -86,6 +92,7 @@ Component → Hook → Service → Storage
 ```
 
 ### Rules:
+
 - Components must NOT access localStorage directly
 - Services handle all persistence logic
 - Hooks manage state + business logic
@@ -98,6 +105,7 @@ Component → Hook → Service → Storage
 - No React logic inside utils
 
 Example:
+
 ```
 utils/calculateMetrics.js
 ```
@@ -106,13 +114,13 @@ utils/calculateMetrics.js
 
 ## 🏷 Naming Conventions
 
-| Type | Rule | Example |
-|------|------|--------|
-| Component | PascalCase | ApplicationCard |
-| Function | camelCase | handleSubmit |
-| Hook | useSomething | useApplications |
-| Constant | UPPER_SNAKE | STATUS_OPTIONS |
-| File | match export | ApplicationCard.jsx |
+| Type      | Rule         | Example             |
+| --------- | ------------ | ------------------- |
+| Component | PascalCase   | ApplicationCard     |
+| Function  | camelCase    | handleSubmit        |
+| Hook      | useSomething | useApplications     |
+| Constant  | UPPER_SNAKE  | STATUS_OPTIONS      |
+| File      | match export | ApplicationCard.jsx |
 
 ---
 
@@ -135,6 +143,7 @@ utils/calculateMetrics.js
 ## 🚀 Feature Rules
 
 ### MVP
+
 - CRUD applications
 - Status updates
 - Filtering
@@ -144,5 +153,5 @@ utils/calculateMetrics.js
 ---
 
 ## ⚠️ Final Rule
-Consistency across the codebase is more important than personal preference.
 
+Consistency across the codebase is more important than personal preference.
