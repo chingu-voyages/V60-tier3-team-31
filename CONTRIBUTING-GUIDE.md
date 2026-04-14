@@ -1,14 +1,6 @@
-# Project Standards (Job Application Tracker)
+# Contributing Guide
 
-This document combines the **Contributing Guide** and **Coding Standards** for the project.
-
----
-
-# 📘 CONTRIBUTING GUIDE
-
-## 📌 Overview
-
-This guide defines workflow and collaboration rules for the project.
+This document defines the workflow and collaboration rules for the project.
 
 ---
 
@@ -17,28 +9,28 @@ This guide defines workflow and collaboration rules for the project.
 We follow a feature-branch workflow:
 
 1. Create a branch from `main`
-2. Implement changes
-3. Push branch
+2. Implement your changes
+3. Push your branch
 4. Open a Pull Request (PR)
 
-🚫 Never push directly to `main`
+🚫 Do NOT push directly to `main`
 
 ---
 
-## 🌿 Branch Naming
+## 🌿 Branch Naming Convention
 
 Use descriptive names:
 
 ```
-feature/login-form
-feature/job-tracker-ui
-fix/navbar-alignment
+feature/application-core
+feature/application-list
+fix/form-validation
 refactor/application-service
 ```
 
 ---
 
-## 📝 Commit Standards
+## 📝 Commit Message Standards
 
 Format:
 
@@ -48,70 +40,85 @@ type: short description
 
 ### Types
 
-- feat → new feature
-- fix → bug fix
-- refactor → code improvement (no feature change)
-- style → formatting only
-- docs → documentation changes
-- test → testing changes
+* feat → new feature
+* fix → bug fix
+* refactor → code improvement
+* style → formatting only
+* docs → documentation updates
+* test → test-related changes
 
 ### Examples
 
 ```
 feat: add application form
-fix: correct navbar alignment
-refactor: extract service layer logic
+fix: correct form validation
+refactor: extract service layer
 ```
 
-🚫 Avoid vague commits:
+🚫 Avoid vague messages:
 
 ```
 update
-fix stuff
 changes
+fix stuff
 ```
 
 ---
 
-## 🔍 Pull Requests
+## 🔍 Pull Request Guidelines
 
-Before submitting:
+Before submitting a PR:
 
-- Code must run successfully
-- No lint errors
-- Keep PRs small and focused
+* Ensure the app runs correctly
+* Resolve all linting issues
+* Keep PRs small and focused
 
-### Must include:
+### PR must include:
 
-- Clear title
-- Description of changes
-- Screenshots (UI changes if applicable)
-- Related issue (if any)
+* Clear title
+* Description of changes
+* Screenshots (if UI changes)
+* Related issue (if applicable)
+
+---
+
+## 🔒 Branch Protection Rules (main)
+
+* No direct pushes to `main`
+* Pull Request required for merging
+* At least 1 approval before merge
+
+---
+
+## 🚀 Deployment
+
+* Production branch: `main`
+* Deployment platform: Vercel (recommended)
 
 ---
 
 ## 🐛 Issue Tracking
 
-- Assign yourself before starting work
-- Break large tasks into smaller issues
-- Clearly describe bugs/features
+* Assign yourself before starting work
+* Break large tasks into smaller issues
+* Clearly describe bugs and features
 
 ---
 
 ## 💬 Communication
 
-- Keep messages clear and direct
-- Ask early if blocked
-- Share progress updates regularly
+* Keep communication clear and concise
+* Ask for help early if blocked
+* Share progress updates regularly
 
 Example:
 
 ```
-Working on application form. PR today.
+Working on application form. PR coming today.
 ```
 
 ---
 
-## ✅ Final Rule
+## ⚠️ Final Rule
 
-Collaboration > individual preference
+Collaboration and consistency are more important than individual preference.
