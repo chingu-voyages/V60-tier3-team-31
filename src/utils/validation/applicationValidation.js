@@ -1,26 +1,26 @@
 export function validateApplication(data) {
   const errors = {};
 
-  if (!data.company?.trim()) {
+  const company = data.company?.trim();
+  const role = data.role?.trim();
+  const dateApplied = data.dateApplied;
+  const status = data.status;
+
+  if (!company) {
     errors.company = "Company name is required";
   }
 
-  if (!data.role?.trim()) {
+  if (!role) {
     errors.role = "Role is required";
   }
 
-  if (!data.dateApplied) {
+  if (!dateApplied) {
     errors.dateApplied = "Date applied is required";
   }
 
-  if (!data.status) {
+  if (!status) {
     errors.status = "Status is required";
   }
 
   return errors;
-}
-
-// Optional helper
-export function isApplicationValid(data) {
-  return Object.keys(validateApplication(data)).length === 0;
 }

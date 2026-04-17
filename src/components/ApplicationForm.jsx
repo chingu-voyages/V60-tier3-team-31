@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import {
   INITIAL_APPLICATION,
   STATUS_OPTIONS,
@@ -14,8 +14,8 @@ export function ApplicationForm({ addApplication }) {
 
   const [errors, setErrors] = useState({});
   const [successMessage, setSuccessMessage] = useState("");
+  const timeoutRef = useRef(null);
 
-  // Handle input changes
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -24,14 +24,12 @@ export function ApplicationForm({ addApplication }) {
       [name]: value,
     }));
 
-    // Clear field error when user types
     setErrors((prev) => ({
       ...prev,
       [name]: "",
     }));
   };
 
-  // Handle submit
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -49,80 +47,90 @@ export function ApplicationForm({ addApplication }) {
 
     addApplication(newApplication);
 
-    // Show success feedback
     setSuccessMessage("Application added successfully!");
 
-    // Reset form
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+
+    timeoutRef.current = setTimeout(() => {
+      setSuccessMessage("");
+    }, 3000);
+
     setFormData({ ...INITIAL_APPLICATION });
     setErrors({});
-
-    // Auto-hide success message
-    setTimeout(() => setSuccessMessage(""), 3000);
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <h2>Add Application</h2>
 
-      {/* Success Message */}
       {successMessage && <p>{successMessage}</p>}
 
-      {/* Company */}
-      <input
-        name="company"
-        value={formData.company}
-        onChange={handleChange}
-        placeholder="Company"
-      />
+      <label>
+        Company
+        <input
+          name="company"
+          value={formData.company}
+          onChange={handleChange}
+        />
+      </label>
       {errors.company && <p>{errors.company}</p>}
 
-      {/* Role */}
-      <input
-        name="role"
-        value={formData.role}
-        onChange={handleChange}
-        placeholder="Role"
-      />
+      <label>
+        Role
+        <input
+          name="role"
+          value={formData.role}
+          onChange={handleChange}
+        />
+      </label>
       {errors.role && <p>{errors.role}</p>}
 
-      {/* Date Applied */}
-      <input
-        name="dateApplied"
-        type="date"
-        value={formData.dateApplied}
-        onChange={handleChange}
-      />
+      <label>
+        Date Applied
+        <input
+          name="dateApplied"
+          type="date"
+          value={formData.dateApplied}
+          onChange={handleChange}
+        />
+      </label>
       {errors.dateApplied && <p>{errors.dateApplied}</p>}
 
-      {/* Location */}
-      <input
-        name="location"
-        value={formData.location}
-        onChange={handleChange}
-        placeholder="Location"
-      />
+      <label>
+        Location
+        <input
+          name="location"
+          value={formData.location}
+          onChange={handleChange}
+        />
+      </label>
 
-      {/* Status */}
-      <select
-        name="status"
-        value={formData.status}
-        onChange={handleChange}
-      >
-        {STATUS_OPTIONS.map((status) => (
-          <option key={status} value={status}>
-            {status}
-          </option>
-        ))}
-      </select>
+      <label>
+        Status
+        <select
+          name="status"
+          value={formData.status}
+          onChange={handleChange}
+        >
+          {STATUS_OPTIONS.map((status) => (
+            <option key={status} value={status}>
+              {status}
+            </option>
+          ))}
+        </select>
+      </label>
       {errors.status && <p>{errors.status}</p>}
 
-      {/* Notes */}
-      <textarea
-        name="notes"
-        value={formData.notes}
-        onChange={handleChange}
-        placeholder="Notes"
-      />
+      <label>
+        Notes
+        <textarea
+          name="notes"
+          value={formData.notes}
+          onChange={handleChange}
+        />
+      </label>
 
       <button type="submit">Add Application</button>
     </form>
