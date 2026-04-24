@@ -2,7 +2,7 @@ import { ApplicationForm } from "../components/ApplicationForm";
 import { ApplicationList } from "../components/ApplicationList";
 import { useApplications } from "../hooks/useApplications";
 
-export function Home() {
+export default function Home() {
   const { applications, addApplication } = useApplications();
 
   return (

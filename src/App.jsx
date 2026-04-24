@@ -1,4 +1,5 @@
-import { Home } from "./pages/Home.jsx";
+import './App.css';
+import Home from "./pages/Home.jsx";
 import { Layout } from "./components/Layout.jsx";
 
 export function App() {
