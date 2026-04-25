@@ -5,8 +5,11 @@ export function useApplications() {
   const [applications, setApplications] = useState(null);
 
   useEffect(() => {
-    const data = applicationService.getAll();
-    setApplications(data);
+    async function load() {
+      const data = applicationService.getAll();
+      setApplications(data);
+    }
+    load();
   }, []);
 
   function addApplication(application) {

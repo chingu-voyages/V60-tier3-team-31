@@ -4,15 +4,20 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 
 export default function Edit() {
     const { id } = useParams();
+    const navigate = useNavigate();
+    const [saved, setSaved] = useState(false);
 
     const applications = applicationService.getAll();
     const application = applications.find((app) => app.id === id);
 
-    const [formData, setFormData] = useState(application);
-    const navigate = useNavigate();
-    
-        if (!application) {
+    const [formData, setFormData] = useState(null);
+
+    if (!application) {
         return <p>Application not found</p>;
+    }
+
+    if (!formData) {
+        setFormData(application);
     }
 
     const handleChange = (e) => {
@@ -23,13 +28,11 @@ export default function Edit() {
         }));
     };
 
-    const [saved, setSaved] = useState(false);
-
     return (
         <div style={{ padding: "20px" }}>
             {saved && <div className="toast">Saved successfully</div>}
             <button onClick={() => navigate("/")}>
-            Back
+                Back
             </button>
             <section className="card">
                 <h1>Edit Application</h1>
