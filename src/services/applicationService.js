@@ -37,6 +37,7 @@ const localApplicationDataSource = {
   saveAll(applications) {
     return writeToStorage(applications);
   },
+
 };
 
 // Service layer (single source of truth)
@@ -52,4 +53,14 @@ export const applicationService = {
   saveAll(applications) {
     return localApplicationDataSource.saveAll(applications);
   },
+
+  update(updatedApp) {
+    const applications = readFromStorage();
+
+    const newList = applications.map((app) =>
+      app.id === updatedApp.id ? updatedApp : app
+    );
+
+    return writeToStorage(newList);
+  }
 };

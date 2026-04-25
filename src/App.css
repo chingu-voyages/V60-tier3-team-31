@@ -3,6 +3,19 @@
     padding: 0;
     margin: 0;
 }
+
+a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+main {
+  min-height: 100vh;
+  padding-bottom: 80px;
+}
+
+
 .footer {
     display: flex;
     justify-content: space-between;
@@ -16,4 +29,62 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+
+
+/* GRID LAYOUT FOR CARDS */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+    align-items: start;
+
+}
+
+
+
+/* CARD */
+.card {
+  border: 1px solid #ddd;
+  padding: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+    width: 100%;
+
+}
+
+.card:hover {
+  background: #f9f9f9;
+}
+
+/* STATUS COLOUR */
+.badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 6px;
+  color: white;
+  font-size: 12px;
+  margin: 6px 0;
+}
+
+.badge.blue { background: #3b82f6; }
+.badge.orange { background: #f59e0b; }
+.badge.red { background: #ef4444; }
+.badge.gray { background: #6b7280; }
+
+/* This appears when cards are still loading */
+.skeleton {
+  height: 80px;
+  background: #eee;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }

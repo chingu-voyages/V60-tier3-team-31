@@ -1,44 +1,95 @@
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+
 function formatDate(date) {
   return new Date(date).toLocaleDateString();
 }
 
-export function ApplicationList({ applications = [] }) {
-  if (applications.length === 0) {
-    return <p>No applications yet.</p>;
+function getStatusColor(status) {
+  switch (status) {
+    case "Applied":
+      return "blue";
+    case "Interview":
+      return "orange";
+    case "Rejected":
+      return "red";
+    default:
+      return "gray";
   }
+}
+
+export function ApplicationList({ applications = [] }) {
+  const [sortBy, setSortBy] = useState("date");
+  const navigate = useNavigate();
+
+  if (!applications) {
+    return (
+      <div>
+        <div className="skeleton"></div>
+        <div className="skeleton"></div>
+      </div>
+    );
+  }
+
+  if (applications.length === 0) {
+    return (
+      <div>
+        <h2>No applications yet</h2>
+        <p>Start by adding your first job application.</p>
+      </div>
+    );
+  }
+
+  const sortedApps = [...applications].sort((a, b) => {
+    if (sortBy === "date") {
+      return new Date(b.dateApplied) - new Date(a.dateApplied);
+    }
+    if (sortBy === "company") {
+      return a.company.localeCompare(b.company);
+    }
+    return 0;
+  });
+  
 
   return (
     <section>
       <h2>Applications</h2>
 
-      {applications.map((application) => {
-        const {
-          id,
-          company,
-          role,
-          dateApplied,
-          location,
-          status,
-          notes,
-        } = application;
+      <select onChange={(e) => setSortBy(e.target.value)}>
+        <option value="date">Sort by Date</option>
+        <option value="company">Sort by Company</option>
+      </select>
 
-        return (
-          <article key={id}>
-            <p><strong>Company:</strong> {company}</p>
-            <p><strong>Role:</strong> {role}</p>
-            <p>
-              <strong>Date Applied:</strong> {formatDate(dateApplied)}
-            </p>
-            <p>
-              <strong>Location:</strong> {location || "Not provided"}
-            </p>
-            <p><strong>Status:</strong> {status}</p>
-            <p>
-              <strong>Notes:</strong> {notes || "No notes added"}
-            </p>
-          </article>
-        );
-      })}
+      <div className="grid">
+        {sortedApps.map((application) => {
+          const {
+            id,
+            company,
+            role,
+            dateApplied,
+            location,
+            status,
+            notes,
+          } = application;
+
+          return (
+            <Link to={`/edit/${id}`} key={id}>
+              <article className="card">
+                <p><strong>{company}</strong></p>
+                <p>{role}</p>
+                <p>{formatDate(dateApplied)}</p>
+
+                <span className={`badge ${getStatusColor(status)}`}>
+                  {status}
+                </span>
+
+                <p>{location || "No location"}</p>
+                <p>{notes || "No notes"}</p>
+              </article>
+            </Link>
+          );
+        })}
+      </div>
     </section>
   );
 }
