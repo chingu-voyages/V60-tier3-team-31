@@ -1,25 +1,29 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { applicationService } from "../services/applicationService";
 
 export function useApplications() {
-  const [applications, setApplications] = useState(null);
-
-  useEffect(() => {
-    const data = applicationService.getAll();
-    setApplications(data);
-  }, []);
+  const [applications, setApplications] = useState(() =>
+    applicationService.getAll()
+  );
 
   function addApplication(application) {
-    try {
-      const updated = applicationService.create(application);
-      setApplications(updated);
-    } catch (error) {
-      console.error("Failed to add application:", error.message);
-    }
+    const updated = applicationService.create(application);
+    setApplications(updated);
+  }
+
+  function updateApplication(updatedApp) {
+    const updated = applicationService.update(updatedApp);
+    setApplications(updated);
+  }
+
+  function refresh() {
+    setApplications(applicationService.getAll());
   }
 
   return {
     applications,
     addApplication,
+    updateApplication,
+    refresh,
   };
 }

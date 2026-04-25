@@ -1,19 +1,21 @@
 import { useState } from "react";
 import { applicationService } from "../services/applicationService";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, useNavigate  } from "react-router-dom";
 
 export default function Edit() {
     const { id } = useParams();
+    const [saved, setSaved] = useState(false);
+    const navigate = useNavigate();
 
     const applications = applicationService.getAll();
     const application = applications.find((app) => app.id === id);
 
-    const [formData, setFormData] = useState(application);
-    const navigate = useNavigate();
-    
-        if (!application) {
+    if (!application) {
         return <p>Application not found</p>;
     }
+    
+    const [formData, setFormData] = useState(application);    
+    
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -23,7 +25,6 @@ export default function Edit() {
         }));
     };
 
-    const [saved, setSaved] = useState(false);
 
     return (
         <div style={{ padding: "20px" }}>

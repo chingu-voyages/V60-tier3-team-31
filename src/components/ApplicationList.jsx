@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function formatDate(date) {
   return new Date(date).toLocaleDateString();
@@ -20,7 +20,6 @@ function getStatusColor(status) {
 
 export function ApplicationList({ applications = [] }) {
   const [sortBy, setSortBy] = useState("date");
-  const navigate = useNavigate();
 
   if (!applications) {
     return (
