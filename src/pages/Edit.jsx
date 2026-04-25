@@ -10,11 +10,12 @@ export default function Edit() {
     const applications = applicationService.getAll();
     const application = applications.find((app) => app.id === id);
 
+    const [formData, setFormData] = useState(application);    
+
     if (!application) {
         return <p>Application not found</p>;
     }
     
-    const [formData, setFormData] = useState(application);    
     
 
     const handleChange = (e) => {
