@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { ApplicationForm } from "../components/ApplicationForm";
-import { ApplicationList } from "../components/ApplicationList";
 import { ApplicationGrid } from "../components/ApplicationGrid";
 import { DeleteConfirmDialog } from "../components/DeleteConfirmDialog";
 import { useApplications } from "../hooks/useApplications";
@@ -29,8 +28,7 @@ export default function Home() {
     <div>
       <h1>Home Page</h1>
       <ApplicationForm addApplication={addApplication} />
-      <ApplicationList applications={applications} />
-
+      
       <DeleteConfirmDialog
         isOpen={isDialogOpen}
         onClose={() => setIsDialogOpen(false)}
