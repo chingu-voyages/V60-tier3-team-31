@@ -1,5 +1,5 @@
 export function ApplicationCard({ application }) {
-    const { id, company, role, dateApplied, status } = application;
+    const { company, role, dateApplied, status } = application;
 
     return (
         <div>
