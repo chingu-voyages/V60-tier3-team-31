@@ -1,6 +1,6 @@
 import { ApplicationCard } from "./ApplicationCard";
 
-export function ApplicationGrid({applications}) {
+export function ApplicationGrid({applications, onDelete}) {
     if (!applications || applications.length == 0) {
         return <p>No applications yet.</p>
     }
@@ -15,6 +15,7 @@ export function ApplicationGrid({applications}) {
                     <ApplicationCard
                     key={app.id}
                     application={app} 
+                    onDelete={onDelete}
                     />
                 
                 )})}
