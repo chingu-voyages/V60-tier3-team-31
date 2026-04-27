@@ -1,5 +1,5 @@
-export function ApplicationCard({ application }) {
-    const { company, role, dateApplied, status } = application;
+export function ApplicationCard({ application, onDelete }) {
+    const { id, company, role, dateApplied, status } = application;
 
     return (
         <div>
@@ -11,7 +11,7 @@ export function ApplicationCard({ application }) {
 
             <div>
                 <button>Edit</button>
-                <button>Delete</button>
+                <button onClick={() => onDelete(id)}>Delete</button>
             </div>
         </div>
     )

@@ -15,8 +15,14 @@ export function useApplications() {
     }
   }
 
+  function deleteApplication(id) {
+    const updated = applicationService.delete(id);
+    setApplications(updated);
+  }
+
   return {
     applications,
     addApplication,
+    deleteApplication,
   };
 }
