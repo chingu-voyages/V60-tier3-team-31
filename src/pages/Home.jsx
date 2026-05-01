@@ -1,9 +1,9 @@
 import { ApplicationForm } from "../components/ApplicationForm";
 import { ApplicationList } from "../components/ApplicationList";
-import { useApplications } from "../hooks/useApplications";
+import { useApplicationsContext } from "../context/useApplicationsContext";
 
 export default function Home() {
-  const { applications, addApplication } = useApplications();
+  const { applications, addApplication } = useApplicationsContext();
   console.log("HOME RENDER");
   return (
     <div>

@@ -54,7 +54,7 @@ export function ApplicationList({ applications = [] }) {
     <section>
       <h2>Applications</h2>
 
-      <select onChange={(e) => setSortBy(e.target.value)}>
+      <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
         <option value="date">Sort by Date</option>
         <option value="company">Sort by Company</option>
       </select>

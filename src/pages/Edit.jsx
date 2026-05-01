@@ -1,23 +1,37 @@
-import { useState } from "react";
-import { applicationService } from "../services/applicationService";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { useApplicationsContext } from "../context/useApplicationsContext";
+import { validateApplication } from "../utils/validation/applicationValidation";
+import { STATUS_OPTIONS } from "../constants/application";
 
 export default function Edit() {
     const { id } = useParams();
     const navigate = useNavigate();
     const [saved, setSaved] = useState(false);
 
-    const applications = applicationService.getAll();
-    const application = applications.find((app) => app.id === id);
+    const { applications, updateApplication } = useApplicationsContext();
+    const application = applications?.find((app) => app.id === id);
+
 
     const [formData, setFormData] = useState(null);
+
+    useEffect(() => {
+        if (application) {
+            // eslint-disable-next-line react-hooks/set-state-in-effect
+            setFormData(application);
+        }
+    }, [application]);
+        
+    if (!applications) {
+        return <p>Loading...</p>;
+    }
 
     if (!application) {
         return <p>Application not found</p>;
     }
 
     if (!formData) {
-        setFormData(application);
+        return <p>Loading...</p>;
     }
 
     const handleChange = (e) => {
@@ -26,6 +40,18 @@ export default function Edit() {
         ...prev,
         [name]: value,
         }));
+    };
+
+
+    const handleSave = () => {
+        const errors = validateApplication(formData);
+
+        if (Object.keys(errors).length > 0) {
+            console.error(errors);
+            return;
+        }
+        updateApplication(formData);
+        setSaved(true);
     };
 
     return (
@@ -67,9 +93,11 @@ export default function Edit() {
                 value={formData.status}
                 onChange={handleChange}
                 >
-                <option value="Applied">Applied</option>
-                <option value="Interview">Interview</option>
-                <option value="Rejected">Rejected</option>
+                {STATUS_OPTIONS.map((status) => (
+                    <option key={status} value={status}>
+                        {status}
+                    </option>
+                ))}
                 </select>
 
                 <textarea
@@ -77,20 +105,7 @@ export default function Edit() {
                 value={formData.notes}
                 onChange={handleChange}
                 />
-                <button
-                    onClick={() => {
-                        applicationService.update(formData);
-                        setSaved(true);
-
-                        setTimeout(() => {
-                        setSaved(false);
-                        }, 1500);
-
-                        setTimeout(() => {
-                        navigate("/");
-                        }, 1800);
-                    }}
-                >
+                <button onClick={handleSave}>
                     Save
                 </button>
             </section>
