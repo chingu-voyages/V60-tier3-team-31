@@ -3,17 +3,12 @@ import {
   INITIAL_APPLICATION,
   STATUS_OPTIONS,
 } from "../constants/application";
-import {
-  validateApplication,
-} from "../utils/validation/applicationValidation";
+import { validateApplication } from "../utils/validation/applicationValidation";
 
 export function ApplicationForm({ addApplication }) {
-  const [formData, setFormData] = useState(() => ({
-    ...INITIAL_APPLICATION,
-  }));
-
-  const [errors, setErrors] = useState({});
+  const [formData, setFormData] = useState({ ...INITIAL_APPLICATION });
   const [successMessage, setSuccessMessage] = useState("");
+
   const timeoutRef = useRef(null);
 
   const handleChange = (event) => {
@@ -23,11 +18,6 @@ export function ApplicationForm({ addApplication }) {
       ...prev,
       [name]: value,
     }));
-
-    setErrors((prev) => ({
-      ...prev,
-      [name]: "",
-    }));
   };
 
   const handleSubmit = (event) => {
@@ -36,7 +26,6 @@ export function ApplicationForm({ addApplication }) {
     const validationErrors = validateApplication(formData);
 
     if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
       return;
     }
 
@@ -58,7 +47,6 @@ export function ApplicationForm({ addApplication }) {
     }, 3000);
 
     setFormData({ ...INITIAL_APPLICATION });
-    setErrors({});
   };
 
   return (
@@ -67,70 +55,48 @@ export function ApplicationForm({ addApplication }) {
 
       {successMessage && <p>{successMessage}</p>}
 
-      <label>
-        Company
-        <input
-          name="company"
-          value={formData.company}
-          onChange={handleChange}
-        />
-      </label>
-      {errors.company && <p>{errors.company}</p>}
+      <input
+        name="company"
+        value={formData.company}
+        onChange={handleChange}
+      />
 
-      <label>
-        Role
-        <input
-          name="role"
-          value={formData.role}
-          onChange={handleChange}
-        />
-      </label>
-      {errors.role && <p>{errors.role}</p>}
+      <input
+        name="role"
+        value={formData.role}
+        onChange={handleChange}
+      />
 
-      <label>
-        Date Applied
-        <input
-          name="dateApplied"
-          type="date"
-          value={formData.dateApplied}
-          onChange={handleChange}
-        />
-      </label>
-      {errors.dateApplied && <p>{errors.dateApplied}</p>}
+      <input
+        name="dateApplied"
+        type="date"
+        value={formData.dateApplied}
+        onChange={handleChange}
+      />
 
-      <label>
-        Location
-        <input
-          name="location"
-          value={formData.location}
-          onChange={handleChange}
-        />
-      </label>
+      <input
+        name="location"
+        value={formData.location}
+        onChange={handleChange}
+      />
 
-      <label>
-        Status
-        <select
-          name="status"
-          value={formData.status}
-          onChange={handleChange}
-        >
-          {STATUS_OPTIONS.map((status) => (
-            <option key={status} value={status}>
-              {status}
-            </option>
-          ))}
-        </select>
-      </label>
-      {errors.status && <p>{errors.status}</p>}
+      <select
+        name="status"
+        value={formData.status}
+        onChange={handleChange}
+      >
+        {STATUS_OPTIONS.map((status) => (
+          <option key={status} value={status}>
+            {status}
+          </option>
+        ))}
+      </select>
 
-      <label>
-        Notes
-        <textarea
-          name="notes"
-          value={formData.notes}
-          onChange={handleChange}
-        />
-      </label>
+      <textarea
+        name="notes"
+        value={formData.notes}
+        onChange={handleChange}
+      />
 
       <button type="submit">Add Application</button>
     </form>

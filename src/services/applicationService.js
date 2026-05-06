@@ -17,20 +17,18 @@ function writeToStorage(applications) {
   return applications;
 }
 
-// Data source (localStorage for now)
 const localApplicationDataSource = {
   list() {
     return readFromStorage();
   },
 
   create(application) {
-    if (!application || typeof application.id !== "string") {
-      throw new Error("Invalid application: missing valid id");
-    }
-
     const current = readFromStorage();
-    const updated = [...current, application];
 
+    const exists = current.some((app) => app.id === application.id);
+    if (exists) return current;
+
+    const updated = [...current, application];
     return writeToStorage(updated);
   },
 
@@ -40,15 +38,11 @@ const localApplicationDataSource = {
 
   delete(id) {
     const current = readFromStorage();
-
-    const updated = current.filter((app)=> app.id !== id);
-
+    const updated = current.filter((app) => app.id !== id);
     return writeToStorage(updated);
   },
-
 };
 
-// Service layer (single source of truth)
 export const applicationService = {
   getAll() {
     return localApplicationDataSource.list();
@@ -64,6 +58,5 @@ export const applicationService = {
 
   delete(id) {
     return localApplicationDataSource.delete(id);
-  }
-
+  },
 };

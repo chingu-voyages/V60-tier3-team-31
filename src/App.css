@@ -1,19 +1,79 @@
-* {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-}
-.footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+.card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.footer-links {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.role {
+  font-weight: 500;
+  color: #374151;
+}
+
+.date {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+button {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+button:first-child {
+  background: #2563eb;
+  color: white;
+}
+
+button:last-child {
+  background: #ef4444;
+  color: white;
+}
+
+/* status pills */
+.status {
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.status-applied {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.status-interview {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status-rejected {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+  padding: 20px;
 }

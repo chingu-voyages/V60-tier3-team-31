@@ -5,8 +5,8 @@ import { DeleteConfirmDialog } from "../components/DeleteConfirmDialog";
 import { useApplications } from "../hooks/useApplications";
 
 export default function Home() {
-  const { applications, addApplication, deleteApplication } = useApplications();
 
+  const { applications, addApplication, deleteApplication } = useApplications();
   const [selectedId, setSelectedId] = useState(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
