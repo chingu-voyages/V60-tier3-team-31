@@ -1,3 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #111;
+}
+
 .card {
   background: white;
   border: 1px solid #e5e7eb;
@@ -76,4 +87,209 @@ button:last-child {
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 16px;
   padding: 20px;
+}
+
+/* Landing Page */
+
+.home-container {
+  min-height: 100vh;
+}
+
+/* NAVBAR */
+
+.navbar {
+  height: 90px;
+  background: #002d2c;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  color: white;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-circle {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 4px solid #43d854;
+}
+
+.logo-section h1 {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.board-menu {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.arrow {
+  font-size: 10px;
+}
+
+/* HERO */
+
+.hero-section {
+  margin-top: 80px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 16px;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: start;
+  font-size: 45px;
+  gap: 40px;
+}
+
+.hero-content h2 {
+  font-weight: 200;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 25px;
+  font-weight: 600;
+  gap: 30px;
+  cursor: pointer;
+}
+
+.Add-App {
+  padding: 25px 90px 25px 90px;
+  background-color: #43d854;
+  border-radius: 20px;
+}
+
+.Bro-App {
+  padding: 25px 60px 25px 60px;
+  border: 1px solid black;
+  border-radius: 20px;
+}
+
+.ofzImg {
+  border-radius: 20px;
+}
+
+.footer {
+  border-top: 1px solid gray;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  font-size: 25px;
+  padding-top: 60px;
+  padding-left: 70px;
+}
+
+.team-grid {
+  display: flex;
+  gap: 20px;
+}
+
+.team-grid div {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+
+.team-grid span {
+  font-size: 16px;
+}
+
+.quote-wrapper {
+    background-color: #f6f6f6;
+    padding: 200px;
+    margin: 240px 140px; 
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+}
+
+.quote-box h3 {
+  text-align: center;
+  font-weight: 500;
+}
+
+.quote-box p{
+  margin-top: 25px;
+  text-align: right;
+  font-size: 15px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1024px) {
+  .hero-section {
+    flex-direction: column;
+    padding: 50px 30px;
+  }
+
+  .hero-content h2 {
+    font-size: 42px;
+    text-align: center;
+  }
+
+  .hero-buttons {
+    align-items: center;
+  }
+
+  .hero-image-container img {
+    width: 100%;
+    height: auto;
+  }
+
+  .quote-box {
+    width: 90%;
+    padding: 60px 24px;
+  }
+
+  .quote-box h3 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    padding: 0 16px;
+  }
+
+  .logo-section h1 {
+    font-size: 22px;
+  }
+
+  .hero-content h2 {
+    font-size: 32px;
+  }
+
+  .primary-btn,
+  .secondary-btn {
+    width: 100%;
+  }
+
+  .footer {
+    padding: 40px 24px;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
 }
